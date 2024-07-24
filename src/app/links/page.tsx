@@ -34,10 +34,11 @@ export default async function page() {
           </div>
           <div className="w-full space-y-6">
             <Link
-              href=""
+              href="#"
               className={`flex w-full rounded-lg gap-2 ${buttonVariants({
                 variant: "outline",
               })}`}
+              onClick={() => {}}
             >
               + Add new link
             </Link>
