@@ -1,8 +1,10 @@
+import Link from "next/link";
 import Image from "next/image";
 import Header from "@/components/header/Header";
 import { createClient } from "../../../utils/supabase/server";
 
 import { redirect } from "next/navigation";
+import { Button, buttonVariants } from "@/components/ui/button";
 
 export default async function page() {
   const supabase = createClient();
@@ -22,9 +24,46 @@ export default async function page() {
         <div className="hidden w-1/3 h-full justify-center items-center bg-white rounded-lg xl:flex">
           <div className="w-[307px] h-[631px] bg-center bg-contain bg-no-repeat bg-[url('/images/preview-section.png')]"></div>
         </div>
-        <div className="w-2/3 bg-white flex rounded-lg">
-          <div>
+        <div className="w-full bg-white flex flex-col p-10 gap-10 rounded-lg xl:w-2/3">
+          <div className="">
             <h1 className="font-bold text-[2rem]">Customize your links</h1>
+            <p className="text-[#888888]">
+              Add/edit/remove links below and then share all your profiles with
+              the world!
+            </p>
+          </div>
+          <div className="w-full space-y-6">
+            <Link
+              href=""
+              className={`flex w-full rounded-lg gap-2 ${buttonVariants({
+                variant: "outline",
+              })}`}
+            >
+              + Add new link
+            </Link>
+            <div className="flex flex-col w-full justify-center items-center bg-[#fafafa] p-10 gap-10 rounded-lg">
+              <Image
+                src="/images/bg-add.svg"
+                width={250}
+                height={161}
+                alt="image"
+              />
+              <div className="flex flex-col space-y-6 w-[30.5rem]">
+                <h3 className="text-[2rem] text-[#333333] text-center font-bold">
+                  Let’s get you started
+                </h3>
+                <p className="text-base text-center font-normal text-[#737373]">
+                  Use the “Add new link” button to get started. Once you have
+                  more than one link, you can reorder and edit them. We’re here
+                  to help you share your profiles with everyone!
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-row">
+            <Button className="ml-auto" disabled>
+              Save
+            </Button>
           </div>
         </div>
       </section>
