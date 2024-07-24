@@ -38,7 +38,6 @@ export default async function page() {
               className={`flex w-full rounded-lg gap-2 ${buttonVariants({
                 variant: "outline",
               })}`}
-              onClick={() => {}}
             >
               + Add new link
             </Link>
@@ -49,7 +48,7 @@ export default async function page() {
                 height={161}
                 alt="image"
               />
-              <div className="flex flex-col space-y-6 w-[30.5rem]">
+              <div className="flex flex-col w-full space-y-6 xl:w-[30.5rem]">
                 <h3 className="text-[2rem] text-[#333333] text-center font-bold">
                   Let’s get you started
                 </h3>
