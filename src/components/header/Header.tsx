@@ -1,8 +1,11 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Button, buttonVariants } from "../ui/button";
 
 export default function Header() {
+  const pathname = usePathname();
   return (
     <header className="flex gap-2 p-6 w-full">
       <section className="flex justify-between items-center w-full p-4 rounded-md bg-white">
@@ -24,9 +27,13 @@ export default function Header() {
             <li>
               <Link
                 href="/links"
-                className={`flex rounded-lg gap-2 ${buttonVariants({
-                  variant: "secondary",
-                })}`}
+                className={`flex rounded-lg gap-2 ${
+                  pathname === "/links"
+                    ? buttonVariants({
+                        variant: "secondary",
+                      })
+                    : ""
+                }`}
               >
                 <Image
                   src="/images/link-bold.svg"
@@ -38,14 +45,23 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <Link href="/profile" className="flex gap-2">
+              <Link
+                href="/profile"
+                className={`flex rounded-lg gap-2 ${
+                  pathname === "/profile"
+                    ? buttonVariants({
+                        variant: "secondary",
+                      })
+                    : ""
+                }`}
+              >
                 <Image
                   src="/images/user-circle-bold.svg"
                   width={21}
                   height={20}
                   alt="links icon"
                 />
-                <span className="hidden text-base text-[#737373] sm:block">
+                <span className="hidden text-base  sm:block">
                   Profile Details
                 </span>
               </Link>
