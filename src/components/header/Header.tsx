@@ -7,7 +7,7 @@ export default function Header() {
     <header className="flex gap-2 p-6 w-full">
       <section className="flex justify-between items-center w-full p-4 rounded-md bg-white">
         <div>
-          <Link href="" className="flex space-x-2 items-center">
+          <Link href="/links" className="flex space-x-2 items-center">
             <Image
               src="/images/dashboard_logo.svg"
               alt="logo"
