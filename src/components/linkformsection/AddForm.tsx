@@ -10,6 +10,7 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { useForm } from "react-hook-form";
+import { Github, Link } from "lucide-react";
 
 export type LinkType = {
   id: number;
@@ -27,6 +28,10 @@ export default function AddForm({ link }: AddFormProperties) {
       ...link,
     },
   });
+  let icon = null;
+  if (link?.platform === "Github") {
+    icon = <Github fill="#737373" size={12} />;
+  }
   const saveForm = () => {};
 
   return (
@@ -45,19 +50,18 @@ export default function AddForm({ link }: AddFormProperties) {
                 <FormControl>
                   <div className="relative flex items-center">
                     <span className="absolute left-3 text-gray-500">
-                      <Image
-                        src="/images/ph_envelope-simple-fill.svg"
-                        alt="icon"
-                        width={16}
-                        height={16}
-                      />
+                      {icon}
                     </span>
                     <Input
+                      list="platforms"
                       className={`shadow-none pl-10 ${
                         fieldState.error ? "border-red-500 pr-32" : ""
                       } focus:outline-none`}
                       {...field}
                     />
+                    <datalist id="platforms">
+                      <option value="Github"></option>
+                    </datalist>
                     {fieldState.error && (
                       <FormDescription className="absolute right-3 text-red-500 text-xs">
                         {fieldState.error.message}
@@ -77,12 +81,7 @@ export default function AddForm({ link }: AddFormProperties) {
                 <FormControl>
                   <div className="relative flex items-center">
                     <span className="absolute left-3 text-gray-500">
-                      <Image
-                        src="/images/ph_envelope-simple-fill.svg"
-                        alt="icon"
-                        width={16}
-                        height={16}
-                      />
+                      <Link size={12} />
                     </span>
                     <Input
                       className={`pl-10 ${
