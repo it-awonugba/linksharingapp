@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "../../utils/supabase/server";
 import { LoginFormType } from "@/components/loginform/LoginForm";
 import { SignUpType } from "@/components/signup/SignUpForm";
+import { LinkType } from "@/components/linkform/LinkForm";
 
 export const handleLogin = async (values: LoginFormType) => {
   const { username, password } = values;
@@ -40,4 +41,26 @@ export const handleSignUp = async (values: SignUpType) => {
   }
 
   return redirect("/?message=Check email to continue sign in process");
+};
+
+export const verifyAuth = async () => {
+  const supabase = createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    return redirect("/");
+  }
+};
+
+export const saveLinks = async (data: LinkType[]) => {
+  const supabase = createClient();
+
+  const { error } = await supabase.from("links").insert(data);
+
+  if (error) {
+    throw new Error(`Error inserting link: ${error.message}`);
+  }
 };

@@ -1,10 +1,7 @@
-import Link from "next/link";
-import Image from "next/image";
 import Header from "@/components/header/Header";
+import LinkForm from "@/components/linkform/LinkForm";
 import { createClient } from "../../../utils/supabase/server";
-
 import { redirect } from "next/navigation";
-import { Button, buttonVariants } from "@/components/ui/button";
 
 export default async function page() {
   const supabase = createClient();
@@ -32,39 +29,8 @@ export default async function page() {
               the world!
             </p>
           </div>
-          <div className="w-full space-y-6">
-            <Link
-              href="#"
-              className={`flex w-full rounded-lg gap-2 ${buttonVariants({
-                variant: "outline",
-              })}`}
-            >
-              + Add new link
-            </Link>
-            <div className="flex flex-col w-full justify-center items-center bg-[#fafafa] p-10 gap-10 rounded-lg">
-              <Image
-                src="/images/bg-add.svg"
-                width={250}
-                height={161}
-                alt="image"
-              />
-              <div className="flex flex-col w-full space-y-6 xl:w-[30.5rem]">
-                <h3 className="text-[2rem] text-[#333333] text-center font-bold">
-                  Let’s get you started
-                </h3>
-                <p className="text-base text-center font-normal text-[#737373]">
-                  Use the “Add new link” button to get started. Once you have
-                  more than one link, you can reorder and edit them. We’re here
-                  to help you share your profiles with everyone!
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-row">
-            <Button className="ml-auto" disabled>
-              Save
-            </Button>
-          </div>
+
+          <LinkForm user_id={user.id} />
         </div>
       </section>
     </div>
