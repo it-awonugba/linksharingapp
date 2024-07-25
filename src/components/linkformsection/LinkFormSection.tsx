@@ -62,7 +62,11 @@ export default function LinkFormSection({ user_id }: { user_id: string }) {
         </div>
       </div>
       <div className="flex flex-row">
-        <Button className="ml-auto" onClick={handleSaveLink}>
+        <Button
+          className="ml-auto"
+          disabled={!links.length}
+          onClick={handleSaveLink}
+        >
           Save
         </Button>
       </div>
