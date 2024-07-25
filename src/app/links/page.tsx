@@ -39,7 +39,7 @@ export default async function Page() {
             <Button variant="outline" className="w-full">
               + Add new link
             </Button>
-            {data.length === 0 && (
+            {data!.length === 0 && (
               <div className="flex flex-col w-full justify-center items-center bg-[#fafafa] p-10 gap-10 rounded-lg">
                 <Image
                   src="/images/bg-add.svg"
@@ -59,13 +59,13 @@ export default async function Page() {
                 </div>
               </div>
             )}
-            {data.length > 0 &&
+            {data!.length > 0 &&
               data.map((link: LinkType) => (
                 <AddForm link={link} key={link.id} />
               ))}
           </div>
           <div className="flex flex-row">
-            <Button className="ml-auto" disabled={!data.length}>
+            <Button className="ml-auto" disabled={!data}>
               Save
             </Button>
           </div>
