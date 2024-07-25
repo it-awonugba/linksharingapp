@@ -10,8 +10,13 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { useForm } from "react-hook-form";
-import { LinkType } from "./LinkFormSection";
 
+export type LinkType = {
+  id: number;
+  platform: string;
+  link: string;
+  uuid: string;
+};
 type AddFormProperties = {
   link?: LinkType;
 };
@@ -27,7 +32,10 @@ export default function AddForm({ link }: AddFormProperties) {
   return (
     <div className="flex flex-col w-full justify-center items-center bg-[#fafafa] p-10 gap-10 rounded-lg">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(saveForm)} className="space-y-3">
+        <form
+          onSubmit={form.handleSubmit(saveForm)}
+          className="space-y-3 w-full"
+        >
           <FormField
             control={form.control}
             name="platform"
@@ -45,7 +53,7 @@ export default function AddForm({ link }: AddFormProperties) {
                       />
                     </span>
                     <Input
-                      className={`pl-10 ${
+                      className={`shadow-none pl-10 ${
                         fieldState.error ? "border-red-500 pr-32" : ""
                       } focus:outline-none`}
                       {...field}

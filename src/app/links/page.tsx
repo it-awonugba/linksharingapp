@@ -1,13 +1,10 @@
 import Header from "@/components/header/Header";
-import LinkFormSection, {
-  LinkType,
-} from "@/components/linkformsection/LinkFormSection";
 import { createClient } from "../../../utils/supabase/server";
 import { redirect } from "next/navigation";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 //import { useState } from "react";
-import AddForm from "@/components/linkformsection/AddForm";
+import AddForm, { LinkType } from "@/components/linkformsection/AddForm";
 
 export default async function Page() {
   //const [visible, setVisible] = useState(false);

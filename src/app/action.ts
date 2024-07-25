@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "../../utils/supabase/server";
 import { LoginFormType } from "@/components/loginform/LoginForm";
 import { SignUpType } from "@/components/signup/SignUpForm";
-import { LinkType } from "@/components/linkformsection/LinkFormSection";
+import { LinkType } from "@/components/linkformsection/AddForm";
 
 export const handleLogin = async (values: LoginFormType) => {
   const { username, password } = values;
