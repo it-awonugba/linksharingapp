@@ -24,7 +24,7 @@ export default function AddForm({ link }: AddFormProperties) {
       <form onSubmit={form.handleSubmit(saveForm)} className="space-y-6">
         <FormField
           control={form.control}
-          name="username"
+          name="Platform"
           render={({ field, fieldState }) => (
             <FormItem className="space-y-1">
               <FormLabel className="text-xs font-normal">Username</FormLabel>
@@ -56,7 +56,7 @@ export default function AddForm({ link }: AddFormProperties) {
         />
         <FormField
           control={form.control}
-          name="username"
+          name="Link"
           render={({ field, fieldState }) => (
             <FormItem className="space-y-1">
               <FormLabel className="text-xs font-normal">Username</FormLabel>
