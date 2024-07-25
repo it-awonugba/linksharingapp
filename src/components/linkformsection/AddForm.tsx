@@ -9,7 +9,7 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { useForm } from "react-hook-form";
-import { LinkType } from "./LinkForm";
+import { LinkType } from "./LinkFormSection";
 
 type AddFormProperties = {
   link?: LinkType;

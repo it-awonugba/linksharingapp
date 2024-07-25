@@ -12,7 +12,7 @@ export type LinkType = {
   user: string;
 };
 
-export default function LinkForm({ user_id }: { user_id: string }) {
+export default function LinkFormSection({ user_id }: { user_id: string }) {
   const [links, setLinks] = useState<LinkType[]>([]);
   const [showForm, setShowForm] = useState<boolean>(false);
 

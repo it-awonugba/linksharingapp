@@ -1,5 +1,5 @@
 import Header from "@/components/header/Header";
-import LinkForm from "@/components/linkform/LinkForm";
+import LinkFormSection from "@/components/linkformsection/LinkFormSection";
 import { createClient } from "../../../utils/supabase/server";
 import { redirect } from "next/navigation";
 
@@ -30,7 +30,7 @@ export default async function page() {
             </p>
           </div>
 
-          <LinkForm user_id={user.id} />
+          <LinkFormSection user_id={user.id} />
         </div>
       </section>
     </div>
