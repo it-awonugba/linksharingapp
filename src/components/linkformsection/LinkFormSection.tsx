@@ -1,20 +1,29 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "../ui/button";
 import Image from "next/image";
 
 import AddForm from "./AddForm";
 import { saveLinks } from "@/app/action";
+import { createClient } from "../../../utils/supabase/client";
 
 export type LinkType = {
+  id: number;
   platform: string;
-  url: string;
-  user: string;
+  link: string;
+  uuid: string;
 };
 
 export default function LinkFormSection({ user_id }: { user_id: string }) {
   const [links, setLinks] = useState<LinkType[]>([]);
   const [showForm, setShowForm] = useState<boolean>(false);
+  useEffect(() => {
+    const fetchLinks = async () => {
+      const supabase = createClient();
+      const { data } = await supabase.from("links").select();
+      setLinks(data);
+    };
+  }, []);
 
   const addNewLink = () => {
     setLinks((prev) => {
@@ -39,34 +48,11 @@ export default function LinkFormSection({ user_id }: { user_id: string }) {
             {showForm && <AddForm />}
           </>
 
-          {links.length === 0 && showForm === false && (
-            <>
-              <Image
-                src="/images/bg-add.svg"
-                width={250}
-                height={161}
-                alt="image"
-              />
-              <div className="flex flex-col w-full space-y-6 xl:w-[30.5rem]">
-                <h3 className="text-[2rem] text-[#333333] text-center font-bold">
-                  Let’s get you started
-                </h3>
-                <p className="text-base text-center font-normal text-[#737373]">
-                  Use the “Add new link” button to get started. Once you have
-                  more than one link, you can reorder and edit them. We’re here
-                  to help you share your profiles with everyone!
-                </p>
-              </div>
-            </>
-          )}
+          {links.length === 0 && showForm === false && <></>}
         </div>
       </div>
       <div className="flex flex-row">
-        <Button
-          className="ml-auto"
-          disabled={!links.length}
-          onClick={handleSaveLink}
-        >
+        <Button className="ml-auto" disabled={!data.length}>
           Save
         </Button>
       </div>

@@ -1,9 +1,16 @@
 import Header from "@/components/header/Header";
-import LinkFormSection from "@/components/linkformsection/LinkFormSection";
+import LinkFormSection, {
+  LinkType,
+} from "@/components/linkformsection/LinkFormSection";
 import { createClient } from "../../../utils/supabase/server";
 import { redirect } from "next/navigation";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+//import { useState } from "react";
+import AddForm from "@/components/linkformsection/AddForm";
 
-export default async function page() {
+export default async function Page() {
+  //const [visible, setVisible] = useState(false);
   const supabase = createClient();
 
   const {
@@ -13,6 +20,8 @@ export default async function page() {
   if (!user) {
     return redirect("/");
   }
+
+  const { data } = await supabase.from("links").select();
 
   return (
     <div className="w-full flex flex-col items-center">
@@ -29,8 +38,40 @@ export default async function page() {
               the world!
             </p>
           </div>
-
-          <LinkFormSection user_id={user.id} />
+          <div className="w-full space-y-6">
+            <Button variant="outline" className="w-full">
+              + Add new link
+            </Button>
+            {!data.length && (
+              <div className="flex flex-col w-full justify-center items-center bg-[#fafafa] p-10 gap-10 rounded-lg">
+                <Image
+                  src="/images/bg-add.svg"
+                  width={250}
+                  height={161}
+                  alt="image"
+                />
+                <div className="flex flex-col w-full space-y-6 xl:w-[30.5rem]">
+                  <h3 className="text-[2rem] text-[#333333] text-center font-bold">
+                    Let’s get you started
+                  </h3>
+                  <p className="text-base text-center font-normal text-[#737373]">
+                    Use the “Add new link” button to get started. Once you have
+                    more than one link, you can reorder and edit them. We’re
+                    here to help you share your profiles with everyone!
+                  </p>
+                </div>
+              </div>
+            )}
+            {data &&
+              data.map((link: LinkType) => (
+                <AddForm link={link} key={link.id} />
+              ))}
+          </div>
+          <div className="flex flex-row">
+            <Button className="ml-auto" disabled={!data.length}>
+              Save
+            </Button>
+          </div>
         </div>
       </section>
     </div>

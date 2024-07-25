@@ -27,40 +27,56 @@ export default function Header() {
             <li>
               <Link
                 href="/links"
-                className={`flex rounded-lg gap-2 ${
-                  pathname === "/links"
-                    ? buttonVariants({
-                        variant: "secondary",
-                      })
-                    : ""
+                className={`flex rounded-lg gap-2 py-[0.6875rem] px-[1.6875rem] ${
+                  pathname === "/links" ? "bg-secondary" : ""
                 }`}
               >
-                <Image
-                  src="/images/link-bold.svg"
-                  width={21}
-                  height={20}
-                  alt="links icon"
-                />
+                {pathname === "/links" ? (
+                  <Image
+                    src="/images/link-bold.svg"
+                    width={20}
+                    height={20}
+                    alt="links icon"
+                    className="w-5 h-5"
+                  />
+                ) : (
+                  <Image
+                    src="/images/link-grey.svg"
+                    width={20}
+                    height={20}
+                    alt="links icon"
+                    className="w-5 h-5"
+                  />
+                )}
+
                 <span className="hidden text-base sm:block">Links</span>
               </Link>
             </li>
             <li>
               <Link
                 href="/profile"
-                className={`flex rounded-lg gap-2 ${
-                  pathname === "/profile"
-                    ? buttonVariants({
-                        variant: "secondary",
-                      })
-                    : ""
+                className={`flex rounded-lg gap-2 py-[0.6875rem] px-[1.6875rem] ${
+                  pathname === "/profile" ? "bg-secondary" : ""
                 }`}
               >
-                <Image
-                  src="/images/user-circle-bold.svg"
-                  width={21}
-                  height={20}
-                  alt="links icon"
-                />
+                {pathname === "/profile" ? (
+                  <Image
+                    src="/images/user-circle-primary.svg"
+                    width={20}
+                    height={20}
+                    alt="links icon"
+                    className="w-5 h-5"
+                  />
+                ) : (
+                  <Image
+                    src="/images/user-circle-bold.svg"
+                    width={20}
+                    height={20}
+                    alt="links icon"
+                    className="w-5 h-5"
+                  />
+                )}
+
                 <span className="hidden text-base  sm:block">
                   Profile Details
                 </span>

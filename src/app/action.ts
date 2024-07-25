@@ -56,6 +56,7 @@ export const verifyAuth = async () => {
 };
 
 export const saveLinks = async (data: LinkType[]) => {
+  console.log(data);
   const supabase = createClient();
 
   const { error } = await supabase.from("links").insert(data);
