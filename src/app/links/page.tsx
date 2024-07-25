@@ -59,7 +59,7 @@ export default async function Page() {
                 </div>
               </div>
             )}
-            {data &&
+            {data.length > 0 &&
               data.map((link: LinkType) => (
                 <AddForm link={link} key={link.id} />
               ))}
