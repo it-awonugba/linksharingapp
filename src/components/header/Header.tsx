@@ -23,7 +23,7 @@ export default function Header() {
           <ul className="flex items-center justify-center gap-4">
             <li>
               <Link
-                href=""
+                href="/links"
                 className={`flex rounded-lg gap-2 ${buttonVariants({
                   variant: "secondary",
                 })}`}
@@ -38,7 +38,7 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <Link href="" className="flex gap-2">
+              <Link href="/profile" className="flex gap-2">
                 <Image
                   src="/images/user-circle-bold.svg"
                   width={21}
