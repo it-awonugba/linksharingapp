@@ -11,6 +11,7 @@ import {
 import { Input } from "../ui/input";
 import { useForm } from "react-hook-form";
 import { Github, Link } from "lucide-react";
+import CustomInput from "../custominput/CustomInput";
 
 export type LinkType = {
   id: number;
@@ -52,16 +53,7 @@ export default function AddForm({ link }: AddFormProperties) {
                     <span className="absolute left-3 text-gray-500">
                       {icon}
                     </span>
-                    <Input
-                      list="platforms"
-                      className={`shadow-none pl-10 ${
-                        fieldState.error ? "border-red-500 pr-32" : ""
-                      } focus:outline-none`}
-                      {...field}
-                    />
-                    <datalist id="platforms">
-                      <option value="Github"></option>
-                    </datalist>
+                    <CustomInput {...field} icon={icon} />
                     {fieldState.error && (
                       <FormDescription className="absolute right-3 text-red-500 text-xs">
                         {fieldState.error.message}
@@ -72,6 +64,7 @@ export default function AddForm({ link }: AddFormProperties) {
               </FormItem>
             )}
           />
+
           <FormField
             control={form.control}
             name="link"
