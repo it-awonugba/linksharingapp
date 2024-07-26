@@ -64,8 +64,8 @@ export default function SignUpForm() {
     : null;
 
   return (
-    <section className="w-[23.4375rem] flex flex-col items-center self-center md:w-[29.75rem]  md:gap-y-[3.1875rem]">
-      <Link href="/">
+    <section className="w-full p-4 flex flex-col gap-y-0  bg-white md:w-[29.75rem] md:items-center md:self-center md:gap-y-[3.1875rem] md:bg-transparent">
+      <Link href="/" className="ml-4 md:ml-0">
         <Image src="/images/logo.png" alt="logo" width={184} height={40} />
       </Link>
       <div className="flex flex-col bg-white w-full rounded-lg p-4  md:p-10 md:gap-10">
