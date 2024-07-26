@@ -1,14 +1,13 @@
 "use client";
 import React, { useState, FocusEvent, ChangeEvent, MouseEvent } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  ChevronDown,
-  ChevronUp,
-  Facebook,
-  Github,
-  LinkedinIcon,
-  Search,
-  Youtube,
-} from "lucide-react";
+  faFacebook,
+  faLinkedin,
+  faYoutube,
+} from "@fortawesome/free-brands-svg-icons";
+import { ChevronDown, ChevronUp, Github } from "lucide-react";
+
 import { Input } from "../ui/input";
 
 interface CustomInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -39,6 +38,7 @@ const CustomInput: React.FC<CustomInputProps> = ({ icon, ...props }) => {
     } as ChangeEvent<HTMLInputElement>;
     props.onChange?.(event);
     setShowDropdown(false);
+    setIsFocused(false);
   };
 
   const toggleDropdown = (e: MouseEvent) => {
@@ -70,9 +70,9 @@ const CustomInput: React.FC<CustomInputProps> = ({ icon, ...props }) => {
           onMouseDown={toggleDropdown}
         >
           {isFocused || showDropdown ? (
-            <ChevronUp color="#633CFF" />
+            <ChevronUp color="#633CFF" size={18} />
           ) : (
-            <ChevronDown />
+            <ChevronDown size={18} />
           )}
         </div>
       </div>
@@ -84,7 +84,8 @@ const CustomInput: React.FC<CustomInputProps> = ({ icon, ...props }) => {
               onMouseDown={() => handleSelect("Github")}
             >
               <Github
-                size="12"
+                size={14}
+                color="#737373"
                 className="fill-[#737373] group-hover/item:fill-primary"
               />
               <span className="text-base">Github</span>
@@ -93,10 +94,10 @@ const CustomInput: React.FC<CustomInputProps> = ({ icon, ...props }) => {
               className="group/item flex items-center gap-x-3 px-4 py-2 cursor-pointer border-b-1 border-b hover:text-primary"
               onMouseDown={() => handleSelect("Youtube")}
             >
-              <Youtube
-                size="16"
-                color="#fff"
-                className="fill-[#737373] group-hover/item:fill-primary"
+              <FontAwesomeIcon
+                size="sm"
+                icon={faYoutube}
+                className="text-[#737373] group-hover/item:text-primary"
               />
               <span className="text-base">Youtube</span>
             </li>
@@ -104,9 +105,10 @@ const CustomInput: React.FC<CustomInputProps> = ({ icon, ...props }) => {
               className="group/item flex items-center gap-x-3 px-4 py-2 cursor-pointer border-b-1 border-b hover:text-primary"
               onMouseDown={() => handleSelect("LinkedIn")}
             >
-              <LinkedinIcon
-                size="12"
-                className="fill-[#737373] group-hover/item:fill-primary"
+              <FontAwesomeIcon
+                size="sm"
+                icon={faLinkedin}
+                className="text-[#737373] group-hover/item:text-primary"
               />
               <span className="text-base">LinkedIn</span>
             </li>
@@ -114,10 +116,10 @@ const CustomInput: React.FC<CustomInputProps> = ({ icon, ...props }) => {
               className="group/item flex items-center gap-x-3 px-4 py-2 cursor-pointer border-b-1 border-b hover:text-primary"
               onMouseDown={() => handleSelect("Facebook")}
             >
-              <Facebook
-                size="12"
-                color="#fff"
-                className="bg-[#737373] group-hover/item:fill-primary group-hover/item:bg-primary"
+              <FontAwesomeIcon
+                size="sm"
+                icon={faFacebook}
+                className="text-[#737373] group-hover/item:text-primary"
               />
               <span className="text-base">Facebook</span>
             </li>
